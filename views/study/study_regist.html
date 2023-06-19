@@ -1,0 +1,20 @@
+{% extends "index.html" %} 
+
+{% block mid %} 
+    <form method="post" action="/share/study_registProcess">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">과목</label>
+            <input name="subject"class="form-control" id="exampleFormControlInput1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">요약내용</label>
+            <textarea name="precontent" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">등록</button>
+    </form>
+    
+{% endblock %} 

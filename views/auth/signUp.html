@@ -1,0 +1,43 @@
+{% extends "index.html" %} 
+
+{% block mid %}
+
+<form class="row g-3 needs-validation" novalidate method="post" action="/auth/signUpProcess">
+  <div style="display: grid; margin:10px;">
+    <div class="col-md-4" >
+      <label for="validationCustom01" class="form-label"><i class="fa-solid fa-envelope"></i> 이메일</label>
+      <input name="email" type="email" class="form-control" id="validationCustom01" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label"><i class="fa-solid fa-id-card-clip"></i> 아이디</label>
+      <input name="id" type="text" class="form-control" id="validationCustom02" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label"><i class="fa-sharp fa-solid fa-file-signature"></i> 이름</label>
+      <div class="input-group has-validation">
+        <input name="nick" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom03" class="form-label"><i class="fa-solid fa-lock"></i> 비밀번호</label>
+      <input name="pw" type="password" class="form-control" id="validationCustom03" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+  </div>
+
+    <div class="col-12">
+      <button class="btn btn-outline-info" type="submit">만들기</button>
+    </div>
+</form>
+{% endblock %} 

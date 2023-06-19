@@ -1,0 +1,13 @@
+{% extends "index.html" %} 
+
+{% block mid %} 
+<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">뭘봐ㅋㅋ</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" onclick="location.href='/'"></button>
+  </div>
+  <div class="offcanvas-body">
+    {{message}}
+  </div>
+</div>
+{% endblock %}

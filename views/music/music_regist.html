@@ -1,0 +1,16 @@
+{% extends "index.html" %} 
+
+{% block mid %} 
+    <form method="post" action="/share/music_registProcess">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">노래 이름</label>
+            <input name="title"class="form-control" id="exampleFormControlInput1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">가수</label>
+            <input name="singer" class="form-control" id="exampleFormControlTextarea1" required></input>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">등록</button>
+    </form>
+    
+{% endblock %} 

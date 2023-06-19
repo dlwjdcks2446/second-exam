@@ -1,0 +1,29 @@
+{% extends "index.html" %} 
+
+{% block mid %} 
+    <div class="card-body" style="width:500px">
+        <h3>{{ row.nick }}의 상세정보</h3>
+        <form id="myPageForm" method="post" style="width:300px;">
+            <table class="table table-striped">
+                <tr><td>아이디</td><td>{{ row.id }}</td></tr>
+                <tr><td>닉네임</td><td>{{ row.nick }}</td></tr>
+                <tr><td>등급</td><td>{{ row.tier }}</td></tr>
+                <tr><td>비밀번호</td><td><input type="password" value='' name="pw" ></td></tr>
+                <tr><td>이메일</td><td><input type="text" value='{{user.email}}' name="email" placeholder="{{row.email}}"></td></tr>
+                <tr><td>마지막 접속일</td><td>{{ row.lastLogin }}</td></tr>
+            </table>
+            <button type="submit" class="btn btn-outline-dark" onclick="edit()">수정</button>
+            <button type="submit" class="btn btn-outline-dark" onclick="withdrawal()">삭제</button>
+        
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('#myPageForm');
+        const withdrawal = () => {
+            form.action = "/auth/withdrawal";
+        }
+        const edit = () => {
+            form.action = "/myPage/{{user.id}}/edit";
+        }
+    </script>
+{% endblock %}

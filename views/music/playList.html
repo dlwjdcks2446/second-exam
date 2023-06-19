@@ -1,0 +1,22 @@
+{% extends "index.html" %} 
+
+{% block mid %}
+<h3>플레이리스트</h3>
+<table class="table table-striped text-center">
+    <th>학생</th>
+    <th>노래</th>
+    <th>가수</th>
+    <th>등록일</th>
+    {% for s in sub %}
+    <tr>
+        <td>{{ s.id }}</a></td>
+        <td><a target="_blank" style="text-decoration: none; color:black;" href="https://www.youtube.com/results?search_query={{ s.singer }}+{{ s.music_name }}">{{ s.music_name}}</a></td>
+        <td>{{ s.singer }}</td>
+        <td>{{ s.joinDate }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% if user %} 
+    <button type="button" class="btn btn-outline-primary" onclick="location.href='/share/music_regist'">노래 등록</button>
+{% endif %} 
+{% endblock %}

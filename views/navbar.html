@@ -1,0 +1,46 @@
+<nav class="navbar navbar-da  rk-color navbar-expand-lg" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">㈜정찬 사이트</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user %}
+        <li class="nav-item">
+          <a class="nav-link active" target='_blank' aria-current="page" href="https://www.youtube.com/watch?v=ihpJcoGboAc"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target='_blank' href="https://github.com/dlwjdcks2446"><i class="fa-brands fa-github"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target='_blank' href="https://getbootstrap.com"><i class="fa-brands fa-bootstrap"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target='_blank' href="https://codeup.kr/"><i class="fa-brands fa-dev"></i></a>
+        </li>
+         {% endif %}
+         {% if user %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-list-ul"></i>
+          </a>
+          <ul class="dropdown-menu" style="width: auto;">
+            <li><a class="dropdown-item" href="/share/study">공부기록방<i class="fa-solid fa-book"></i></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/share/music">음악 목록들</a></li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+      {% include "login.html" %} 
+      
+      {% if user %}
+      <form method="get" action="/share/search" class="d-flex">
+        <input name="search" class="form-control me-2" type="검색" placeholder="검색" aria-label="검색">
+        <button class="btn btn-outline-dark" type="submit">검색</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</nav>

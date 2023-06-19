@@ -1,0 +1,70 @@
+{% extends "index.html" %} 
+
+{% block mid %} 
+<h3>가르침을 받는 곳</h3>
+<table class="table table-striped text-center">
+  <th>학생</th>
+  <th>공부방</th>
+  <th>내용</th>
+  <tr>
+    <td>{{ row.id }}</a></td>
+    <td><a style="text-decoration: none; color:black;" href="/share/study/{{s.subject_name}}">{{ row.subject_name }}</a></td>
+    <td>{{ row.content }}</td>
+
+  </tr>
+</table>
+
+<div class="p-2 h-auto border-black bg-slate-300 col-span-1">
+  <div>
+      <textarea class="border-solid border-1 border-pink-300" readonly id="chat-log" style="height:400px; width:100%"></textarea>
+    </div>
+  {% if user %}
+  <div>
+    <input type="hidden" id="myNick" value="{{user.nick}}"></input>
+    <input class="border-solid border-1 border-sky-300" id="myMsg" type="text">
+    <button id="ready" type="button" class="px-2 py-1 text-gray-500 hover:text-white bg-yellow-400 rounded-full">전달</button>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  const ws = new WebSocket("ws://localhost:3001");
+  const $chatLog = document.querySelector('#chat-log');
+  const $myNick = document.querySelector('#myNick');
+  const $myMsg = document.querySelector('#myMsg');
+
+  const myMsgSend = (code = 'common', msg = $myMsg.value ) =>{
+    const myMsg = { 
+                    code : code,
+                    nick : $myNick.value, 
+                    msg : msg, 
+                  }; 
+  ws.send(JSON.stringify(myMsg));
+  $myMsg.value="";
+}
+
+const functionByMsgCode = {
+  'common' : (msg) => {
+    $chatLog.innerHTML += `${msg.nick} : ${msg.msg}\n` ;
+    $chatLog.scrollTop = $chatLog.scrollHeight;
+  },
+}
+
+const receiveMsg = (e) => {
+  const msg = JSON.parse(e.data)
+  functionByMsgCode[msg.code](msg);
+}
+
+ws.onmessage = receiveMsg;
+
+
+document.addEventListener('keyup', (e)=>{
+  if(e.key == "Enter") {
+    if($myMsg.value.trim().length > 0)
+      myMsgSend();
+  }
+})  
+</script>
+
+
+{% endblock %} 
